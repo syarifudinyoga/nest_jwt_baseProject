@@ -113,6 +113,9 @@ $ nest g mo auth
 # create service auth
 $ nest g s auth
 
-#create module auth
+# create module auth
 $ nest g co auth
+
+# create guard 
+$ nest g gu auth/jwt-auth
 ```
