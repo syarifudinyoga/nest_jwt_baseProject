@@ -84,3 +84,13 @@ $ npx prisma db push
 # test generate prisma
 $ npx prisma generate
 ```
+
+## Create Module & Service Prisma
+
+```bash
+# create module prisma
+$ nest g mo prisma
+
+#create service prisma
+$ nest g s prisma
+```
