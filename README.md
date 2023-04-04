@@ -134,3 +134,9 @@ $ npm install class-transformer
 # create swagger
 $ npm install --save @nestjs/swagger swagger-ui-express
 ```
+
+## Execute Swagger
+
+```bash
+http://localhost:3000/openapi/
+```
