@@ -127,3 +127,10 @@ $ npm install @types/bcrypt -D
 $ npm install class-validator
 $ npm install class-transformer
 ```
+
+## Add Open API (Swagger)
+
+```bash
+# create swagger
+$ npm install --save @nestjs/swagger swagger-ui-express
+```
