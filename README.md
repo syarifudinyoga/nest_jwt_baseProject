@@ -103,3 +103,16 @@ $ npm install @nestjs/passport passport passport-local
 $ npm install @types/passport-jwt -D
 $ npm install @nestjs/jwt
 ```
+
+## Auth File
+
+```bash
+# create module auth
+$ nest g mo auth
+
+# create service auth
+$ nest g s auth
+
+#create module auth
+$ nest g co auth
+```
