@@ -118,4 +118,8 @@ $ nest g co auth
 
 # create guard 
 $ nest g gu auth/jwt-auth
+
+# install bcrypt (Make pipe for transform hsh to bcrypt)
+$ npm install bcrypt
+$ npm install @types/bcrypt -D
 ```
