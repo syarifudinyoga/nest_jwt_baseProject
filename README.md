@@ -138,5 +138,9 @@ $ npm install --save @nestjs/swagger swagger-ui-express
 ## Execute Swagger
 
 ```bash
+# execute
 http://localhost:3000/openapi/
+
+#source example
+https://www.mistercoding.com/post/nestjs/setup-jwt-using-nestjs-prisma-mysql-database/
 ```
