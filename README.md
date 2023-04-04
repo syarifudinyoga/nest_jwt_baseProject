@@ -119,7 +119,11 @@ $ nest g co auth
 # create guard 
 $ nest g gu auth/jwt-auth
 
-# install bcrypt (Make pipe for transform hsh to bcrypt)
+# install bcrypt (Make pipe for transform hash to bcrypt)
 $ npm install bcrypt
 $ npm install @types/bcrypt -D
+
+# install class validator and transformer
+$ npm install class-validator
+$ npm install class-transformer
 ```
