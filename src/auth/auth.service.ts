@@ -5,7 +5,6 @@ import { LoginDto } from './dto/login.dto';
 import { omit } from 'lodash';
 import { compare } from 'bcrypt';
 import { JwtConfig } from 'src/jwt.config';
-import { use } from 'passport';
 
 @Injectable()
 export class AuthService {
@@ -34,10 +33,10 @@ export class AuthService {
     if (createUser) {
       return {
         statusCode: 200,
-        message: 'Register Success',
+        message: 'Register success',
       };
     }
-    throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+    throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
   }
 
   /**
@@ -50,13 +49,13 @@ export class AuthService {
       where: { email: dto.email },
     });
 
-    if (user) {
+    if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
 
     const checkPassword = await compare(dto.password, user.password);
     if (!checkPassword) {
-      throw new HttpException('Invalid Credential', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('Credential Incorrect', HttpStatus.UNAUTHORIZED);
     }
     return await this.generateJwt(
       user.id,

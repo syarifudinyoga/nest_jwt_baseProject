@@ -8,12 +8,14 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
-import { JwtAuthGuard } from './jwt-auth/jwt-auth.guard';
-import { TransformPasswordPipe } from './tranform-password.pipe';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { TransformPasswordPipe } from './transform-password.pipe';
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   /**
@@ -39,6 +41,8 @@ export class AuthController {
    * @param dto
    * @returns
    */
+  @HttpCode(200)
+  @Post('login')
   async login(@Body() dto: LoginDto) {
     return await this.authService.login(dto);
   }

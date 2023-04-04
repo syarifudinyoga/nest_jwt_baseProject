@@ -6,10 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Open API Test Yoga')
-    .setDescription('API Test Yoga')
+    .setTitle('Open API Test Example Nest JWT Yoga')
+    .setDescription('API Test Example Nest JWT Yoga')
     .setVersion('1.0')
-    .addTag('Yoga')
+    .addTag('Example Nest JWT Yoga')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('openapi', app, document);
@@ -18,12 +18,13 @@ async function bootstrap() {
     origin: ['http://localhost:3000', 'http://localhost', '*'],
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     preflightContinue: false,
-    optionSuccessStatus: 204,
-    credential: true,
+    optionsSuccessStatus: 204,
+    credentials: true,
     allowedHeaders: ['*'],
   };
 
   app.enableCors(cors);
+
   await app.listen(3000);
 }
 bootstrap();
