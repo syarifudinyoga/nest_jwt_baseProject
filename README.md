@@ -58,16 +58,29 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Additional
+## Install Prisma (For Database)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# with npm
+$ npm install prisma -D
+$ npm install @prisma/client
 
-## Stay in touch
+# with yarn
+$ yarn add prisma -D
+$ yarn add @prisma/client
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# then run
+$ npx prisma
+$ npx prisma init
+```
 
-## License
+## Push Prisma to Database
 
-Nest is [MIT licensed](LICENSE).
+```bash
+# run prisma after add prisma/schema.prisma
+$ npx prisma db push 
+
+# test generate prisma
+$ npx prisma generate
+```
