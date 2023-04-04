@@ -58,7 +58,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Additional
+## ========================= Additional ================================
 ## Install Prisma (For Database)
 
 ```bash
@@ -91,6 +91,15 @@ $ npx prisma generate
 # create module prisma
 $ nest g mo prisma
 
-#create service prisma
+# create service prisma
 $ nest g s prisma
+```
+
+## Setup JWT
+
+```bash
+# install npm for setup jwt
+$ npm install @nestjs/passport passport passport-local
+$ npm install @types/passport-jwt -D
+$ npm install @nestjs/jwt
 ```
