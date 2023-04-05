@@ -99,4 +99,18 @@ export class AuthService {
       user: omit(user, ['password', 'created_at', 'updated_at']),
     };
   }
+
+  /**
+   * Login Service
+   * @returns
+   */
+  async getAllUser() {
+    const user = await this.dbService.users.findMany();
+
+    if (!user) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return user;
+  }
 }

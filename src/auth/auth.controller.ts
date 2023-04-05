@@ -16,7 +16,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 import { TransformPasswordPipe } from './transform-password.pipe';
 
 @ApiTags('Auth')
-@Controller('auth')
+@Controller('api/v1/auth')
 export class AuthController {
   /**
    * Constructor
@@ -56,5 +56,14 @@ export class AuthController {
     return {
       message: 'Profile',
     };
+  }
+
+  /**
+   * Get All Data User
+   */
+  @UseGuards(JwtAuthGuard)
+  @Get('users')
+  async user() {
+    return await this.authService.getAllUser();
   }
 }
