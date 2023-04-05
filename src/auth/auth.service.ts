@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { LoginDto } from './dto/login.dto';
+import { ParamsDto } from './dto/params.dto';
 import { omit } from 'lodash';
 import { compare } from 'bcrypt';
 import { JwtConfig } from 'src/jwt.config';
@@ -101,7 +102,7 @@ export class AuthService {
   }
 
   /**
-   * Login Service
+   * Get All User
    * @returns
    */
   async getAllUser() {
@@ -112,5 +113,52 @@ export class AuthService {
     }
 
     return user;
+  }
+
+  /**
+   * Get By ID
+   * @param dto
+   * @returns
+   */
+  async getById(dto: ParamsDto) {
+    const user = await this.dbService.users.findFirst({
+      where: {
+        email: dto.email,
+      },
+    });
+
+    if (!user) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return user;
+  }
+
+  /**
+   * Generate JWT
+   * @param userId
+   * @param email
+   * @param user
+   * @param secret
+   * @param expired
+   * @returns
+   */
+  async logout() {
+    const accessToken = await this.jwtService.sign(
+      {
+        sub: '',
+        email: '',
+        name: '',
+      },
+      {
+        expiresIn: '0s',
+        secret: '',
+      },
+    );
+    return {
+      statusCode: 200,
+      accessToken: accessToken,
+      message: 'Logout Success',
+    };
   }
 }

@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   HttpCode,
+  Param,
   Post,
   UseGuards,
   UsePipes,
@@ -11,6 +12,7 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { ParamsDto } from './dto/params.dto';
 import { RegisterDto } from './dto/register.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { TransformPasswordPipe } from './transform-password.pipe';
@@ -52,10 +54,8 @@ export class AuthController {
    */
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  async profile() {
-    return {
-      message: 'Profile',
-    };
+  async profile(@Body() dto: ParamsDto) {
+    return await this.authService.getById(dto);
   }
 
   /**
@@ -65,5 +65,14 @@ export class AuthController {
   @Get('users')
   async user() {
     return await this.authService.getAllUser();
+  }
+
+  /**
+   * Logout
+   */
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  async logout() {
+    return await this.authService.logout();
   }
 }
