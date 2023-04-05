@@ -37,4 +37,12 @@ export class TodoController {
   async create(@Body() dto: TodoDto) {
     return await this.todoService.createTodo(dto);
   }
+
+  /**
+   * Get detail User
+   */
+  @Get(':id')
+  async profile(@Param('id') id: number) {
+    return await this.todoService.getById(id);
+  }
 }

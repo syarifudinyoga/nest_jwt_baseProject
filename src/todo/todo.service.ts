@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { omit } from 'lodash';
+import { TodoDto } from './dto/todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -37,5 +38,23 @@ export class TodoService {
       };
     }
     throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
+  }
+
+  /**
+   * Get By ID
+   * @returns
+   */
+  async getById(id: any) {
+    const todo = await this.dbService.todos.findFirst({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    if (!todo) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return todo;
   }
 }
