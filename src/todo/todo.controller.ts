@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
@@ -43,7 +44,15 @@ export class TodoController {
    * Update Todos
    */
   @Patch(':id')
-  async profile(@Param('id') id: number, @Body() dto: TodoDto) {
+  async update(@Param('id') id: number, @Body() dto: TodoDto) {
     return await this.todoService.update(id, dto);
+  }
+
+  /**
+   * Update Todos
+   */
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    return await this.todoService.delete(id);
   }
 }

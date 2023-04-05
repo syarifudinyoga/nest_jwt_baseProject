@@ -74,4 +74,20 @@ export class TodoService {
 
     return todo;
   }
+
+  /**
+   * Get By ID
+   * @returns
+   */
+  async delete(id: any) {
+    const todo = await this.dbService.todos.delete({
+      where: { id: Number(id) },
+    });
+
+    if (!todo) {
+      throw new HttpException('Bad Request', HttpStatus.NOT_FOUND);
+    }
+
+    return todo;
+  }
 }
