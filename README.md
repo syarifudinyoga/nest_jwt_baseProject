@@ -144,3 +144,15 @@ http://localhost:3000/openapi/
 #source example
 https://www.mistercoding.com/post/nestjs/setup-jwt-using-nestjs-prisma-mysql-database/
 ```
+
+## Create Todo
+```bash
+# create module todo
+$ nest g mo todo
+
+# create service todo
+$ nest g s todo
+
+# create module todo
+$ nest g co todo
+```
