@@ -10,6 +10,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { TodoDto } from './dto/todo.dto';
 import { TodoService } from './todo.service';
 
 @ApiTags('Todos')
@@ -25,7 +26,15 @@ export class TodoController {
    * Get All Data Todos
    */
   @Get('')
-  async user() {
+  async todo() {
     return await this.todoService.getAllTodo();
+  }
+
+  /**
+   * Create Data Todos
+   */
+  @Post('')
+  async create(@Body() dto: TodoDto) {
+    return await this.todoService.createTodo(dto);
   }
 }

@@ -19,4 +19,23 @@ export class TodoService {
 
     return todos;
   }
+
+  /**
+   * Create Todo
+   * @param dto
+   * @returns
+   */
+  async createTodo(dto: any) {
+    const createTodo = await this.dbService.todos.create({
+      data: dto,
+    });
+    if (createTodo) {
+      return {
+        statusCode: 200,
+        data: dto,
+        message: 'Create todos data success',
+      };
+    }
+    throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
+  }
 }
