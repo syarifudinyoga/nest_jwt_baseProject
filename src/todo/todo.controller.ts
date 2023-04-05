@@ -4,6 +4,7 @@ import {
   Get,
   HttpCode,
   Param,
+  Patch,
   Post,
   UseGuards,
   UsePipes,
@@ -39,10 +40,10 @@ export class TodoController {
   }
 
   /**
-   * Get detail User
+   * Update Todos
    */
-  @Get(':id')
-  async profile(@Param('id') id: number) {
-    return await this.todoService.getById(id);
+  @Patch(':id')
+  async profile(@Param('id') id: number, @Body() dto: TodoDto) {
+    return await this.todoService.update(id, dto);
   }
 }
